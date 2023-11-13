@@ -20,7 +20,11 @@
  *   getStringLength(undefined) => 0
  */
 function getStringLength(value) {
-  return value.length();
+  return value === null || value === undefined ? 0 : value.length;
+}
+
+/**
+
 }
 
 /**
@@ -39,6 +43,9 @@ function getStringLength(value) {
  */
 function isString(/* value */) {
   throw new Error('Not implemented');
+}
+
+/**
 }
 
 /**
