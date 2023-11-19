@@ -474,8 +474,23 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  return str
+    .split('')
+    .map((letter) => {
+      if (
+        (letter >= 'a' && letter <= 'z') ||
+        (letter >= 'A' && letter <= 'Z')
+      ) {
+        return String.fromCharCode(
+          letter === letter.toLowerCase()
+            ? letter.charCodeAt(0) + (letter <= 'm' ? 13 : -13)
+            : letter.charCodeAt(0) + (letter <= 'M' ? 13 : -13)
+        );
+      }
+      return letter;
+    })
+    .join('');
 }
 
 /**
